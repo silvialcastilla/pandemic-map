@@ -2,7 +2,7 @@
 const OPEN_STREET = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 const madridCentro = L.latLng(40.4169019,-3.7056721)
-const zoom = 13
+const zoom = 12
 
 const map = L.map('map')
 
@@ -67,5 +67,5 @@ const keepCodingCircle = L.circle(keepCoding, {
 }).addTo(map);
 
 var polygon = L.polygon([
-    theBridge, neoland, upgradeHub, ironhack, adalab, keepCoding
+    theBridge, upgradeHub, neoland,  ironhack, adalab, keepCoding
 ]).addTo(map);
