@@ -1,5 +1,5 @@
 const OPEN_STREET_MAPS = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const OTRO_MAPA = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+const OTRO_MAPA = 'https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png';
 
 const madridCentro = L.latLng(40.4259019,-3.7056721);
 const zoom = 13;
