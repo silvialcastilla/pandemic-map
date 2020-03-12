@@ -1,5 +1,5 @@
- 
-const OPEN_STREET = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const OPEN_STREET_MAPS = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const OTRO_MAPA = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
 
 const madridCentro = L.latLng(40.4259019,-3.7056721);
 const zoom = 13;
@@ -8,8 +8,8 @@ const map = L.map('map');
 
 map.setView(madridCentro, zoom);
 
-L.tileLayer(OPEN_STREET).addTo(map);
-
+L.tileLayer(OPEN_STREET_MAPS).addTo(map);
+L.tileLayer(OTRO_MAPA).addTo(map);
 
 const theBridge = L.latLng(40.4215143, -3.69486);
 const neoland = L.latLng(40.4222658, -3.716275);
@@ -120,9 +120,28 @@ const keepCodingCircle = L.circle(keepCoding, {
     radius: 400
 }).addTo(map);
 
-var polygon = L.polygon([
+const polygon = L.polygon([
     theBridge, upgradeHub, neoland,  ironhack, adalab, keepCoding
 ]).addTo(map);
+
+const markers = L.layerGroup([theBridgeMarker,neolandMarker,upgradeHubMarker,ironhackMarker,adalabMarker,keepCodingMarker]);
+const circles = L.layerGroup([theBridgeCircle,neolandCircle,upgradeHubCircle,ironhackCircle,adalabCircle,keepCodingCircle]);
+
+const openStreetMapsTileLayer = L.tileLayer(OPEN_STREET_MAPS);
+const dibujitoTileLayer = L.tileLayer(OTRO_MAPA);
+
+
+const baseMaps = {
+	'basemap': openStreetMapsTileLayer,
+	'othermap': dibujitoTileLayer
+};
+const overlayMaps = {
+    'marcadores': markers,
+    'circulos': circles,
+    'poligono': polygon
+};
+L.control.layers(baseMaps,overlayMaps).addTo(map);
+
 
 
 
